@@ -4,36 +4,28 @@ class CommentsController < ApplicationController
   # GET /posts/:post_id/comments
   # GET /posts/:post_id/comments.json
   def index
-    #@comments = Comment.all
-    #post = Post.find(params[:post_id])
     @comments = @post.comments
   end
 
   # GET /posts/:post_id/comments/:id
   # GET /comments/:id.json
   def show
-    #post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
   end
 
   # GET /posts/:post_id/comments/new
   def new
-    #@comment = Comment.new
-    #post = Post.find(params[:post_id])
     @comment = @post.comments.build
   end
 
   # GET /posts/:post_id/comments/:id/edit
   def edit
-    #post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
   end
 
   # POST /posts/:post_id/comments
   # POST /posts/:post_id/comments.json
   def create
-    #@comment = Comment.new(comment_params)
-    #post = Post.find(params[:post_id])
     @comment = @post.comments.create(comment_params)
 
     respond_to do |format|
@@ -50,7 +42,6 @@ class CommentsController < ApplicationController
   # PATCH/PUT /posts/:post_id/comments/:id
   # PATCH/PUT /posts/:post_id/comments/:id.json
   def update
-    #post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
 
     respond_to do |format|
@@ -80,10 +71,7 @@ class CommentsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def load_post
-      #@comment = Comment.find(params[:id])
       @post = Post.find(params[:post_id])
-      #@comments = post.comments
-      #@comment = post.comments.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
